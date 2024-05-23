@@ -80,6 +80,21 @@ enum plist_type
     PLIST_NONE = 10 /**< No type */
 }
 
+/**
+ * libplist format types
+ */
+enum plist_format_t {
+    PLIST_FORMAT_NONE    = 0,  /// No format
+    PLIST_FORMAT_XML     = 1,  /// XML format
+    PLIST_FORMAT_BINARY  = 2,  /// bplist00 format
+    PLIST_FORMAT_JSON    = 3,  /// JSON format
+    PLIST_FORMAT_OSTEP   = 4,  /// OpenStep "old-style" plist format
+    /* 5-9 are reserved for possible future use */
+    PLIST_FORMAT_PRINT   = 10, /// human-readable output-only format
+    PLIST_FORMAT_LIMD    = 11, /// "libimobiledevice" output-only format (ideviceinfo)
+    PLIST_FORMAT_PLUTIL  = 12, /// plutil-style output-only format
+}
+
 /********************************************
  *                                          *
  *          Creation & Destruction          *
@@ -665,7 +680,7 @@ void plist_from_bin (const(char)* plist_bin, uint length, plist_t* plist);
  * @param length length of the buffer to read.
  * @param plist a pointer to the imported plist.
  */
-void plist_from_memory (const(char)* plist_data, uint length, plist_t* plist);
+void plist_from_memory (const(char)* plist_data, uint length, plist_t* plist, plist_format_t* format);
 
 /**
  * Test if in-memory plist data is binary or XML
