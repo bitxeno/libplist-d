@@ -7,6 +7,7 @@ import std.meta;
 import std.range;
 import std.string;
 import std.traits;
+import std.stdio;
 
 import plist.c;
 
@@ -72,6 +73,7 @@ public abstract class Plist {
 
     public static Plist fromMemory(ubyte[] bin) {
         plist_t handle;
+        writeln("plist_from_memory");
         plist_from_memory(cast(const char*) bin.ptr, cast(uint) bin.length, &handle, null);
         return wrap(handle);
     }
