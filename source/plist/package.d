@@ -72,7 +72,7 @@ public abstract class Plist {
 
     public static Plist fromMemory(ubyte[] bin) {
         plist_t handle;
-        plist_from_memory(cast(const char*) bin.ptr, cast(uint) bin.length, &handle);
+        plist_from_memory(cast(const char*) bin.ptr, cast(uint) bin.length, &handle, null);
         return wrap(handle);
     }
 
